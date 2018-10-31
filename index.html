@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="ulsc">
+        <li>85</li>
+        <li>76</li>
+        <li>92</li>
+        <li>62</li>
+    </ul>
+
+    <script>
+            function search2Obj(search){
+                search=search.slice(1);
+                //uname=dingding&upwd=123456
+                var arr=search.split("&");
+                //[uname=dingding,upwd=123456]
+                var obj={}
+                for(var key in arr){
+                   var a1=(arr[key].split("="))[0];
+                   var a2=(arr[key].split("="))[1];
+                   obj[a1]=a2; 
+                }
+                  return obj;
+              } 
+              console.log(search2Obj("?uname=dingding&upwd=123456"));
+              
+        var html=ulsc.innerHTML;
+        
+        html=html.replace(/^\s*<li>/,"");
+        html=html.replace(/<\/li>\s*$/,"")
+        console.log(html);
+        var sc=html.split(/<\/li>\s*<li>/);
+        console.log(sc);
+        sc.sort(function(a,b){return b-a});
+        console.log(sc);
+
+        html="<li>"+sc.join("</li><li>")+"</li>";
+        ulsc.innerHTML=html;
+        console.log(html);
+
+        var str = "老师：请用小红、我的、朋友三个词造句。小亮：小红是我的朋友！小然：朋友！小红是我的！";
+        var arr = str.match(/小[\u4e00-\u9fa5]/ig);
+        str=str.replace(/小[\u4e00-\u9fa5]/ig,"小*");
+        console.log(str);
+        console.log(`共替换${arr!=null?arr.length:0}处`);
+        var str2="you can you up!"
+        str2=str2.replace(/\b[a-z]/ig,function(kword){
+            return kword.toUpperCase();
+        });
+        console.log(str2);
+        str3="    cheng     liang      ";
+        str3=str3.replace(/\s+$/,"");
+        str4=function(str){
+            return str3.replace(/^\s+|\s+$/,"");
+        }
+        console.log("1"+str3+"1");
+        console.log("1"+str4(str3)+"1");
+        var str5="hello word";
+        arr=str5.split("");
+        arr=arr.reverse();
+        str5=arr.join("");
+        console.log(str5);
+    </script>
+</body>
+</html>
